@@ -1,0 +1,24 @@
+name: PHP
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0' # या आपकी आवश्यक PHP संस्करण
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Run tests
+        run: vendor/bin/phpunit # या आपकी परीक्षण कमांड
+
+      - name: Build plugin
+        run: echo "Build steps here" # यहाँ अपनी बिल्ड कमांड डालें
